@@ -1,12 +1,13 @@
 import mysql.connector
+import config
 
 def connect_db():
     try:
         db = mysql.connector.connect(
-            host="localhost",
-            user="mtz",
-            password='Mmoataz0000',
-            database='db_student_management'
+            host=config.DB_HOST,
+            user=config.DB_USER,
+            password=config.DB_PASSWORD,
+            database=config.DB_NAME
         )
         print("Database connected successfully ! ")
         return db
