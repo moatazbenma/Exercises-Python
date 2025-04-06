@@ -1,4 +1,5 @@
 import mysql.connector
+import config
 
 class Expense:
     def __init__(self, title, amount, category, date_now, description):
@@ -13,10 +14,10 @@ class Expense:
         """Establish and return a database connection."""
         try:
             connection = mysql.connector.connect(
-                host='localhost',
-                user='mtz',
-                password='Mmoataz0000',
-                database='expense_tracker'
+                host=config.DB_HOST,
+                user=config.DB_USER,
+                password=config.DB_PASSWORD,
+                database=config.DB_NAME
             )
             return connection
         except mysql.connector.Error as e:
