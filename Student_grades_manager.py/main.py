@@ -125,6 +125,7 @@ def grade_menu():
     print("2. View Grade")
     print("3. Edit Grade")
     print("4. Delete Grade")
+    print("5. Return Back")
 
 
     try:
@@ -159,6 +160,12 @@ def grade_menu():
         Nim = int(input("Nim : "))
 
         Grade.delete_grade(Nim)
+
+    elif choice == 5:
+        return
+    
+    else:
+        print("❌ Invalid option.")
 
 
 
