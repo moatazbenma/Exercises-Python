@@ -1,11 +1,12 @@
-from Student_grades import Student, Subject
+from Student_grades import Student, Subject, Grade
 
 def main():
     while True:
         print("\nMade By : MTZ_BNS\n")
         print("1. Student")
         print("2. Subjects")
-        print("3. Exit")
+        print("3. Grades")
+        print("4. Exit")
 
         try:
             user = int(input("Enter Your Choice : "))
@@ -18,8 +19,12 @@ def main():
         elif user == 2:
             subject_menu()
         elif user == 3:
+            grade_menu()
+
+        elif user == 4:
             print("👋 Exiting...")
             break
+
         else:
             print("❌ Invalid option. Try again.")
 
@@ -112,5 +117,49 @@ def subject_menu():
 
     else:
         print("❌ Invalid option.")
+
+
+
+def grade_menu():
+    print("1. Add Grade")
+    print("2. View Grade")
+    print("3. Edit Grade")
+    print("4. Delete Grade")
+
+
+    try:
+        choice = int(input('Enter your choice : '))
+ 
+    except ValueError as e:
+        print(f'Error : {e}')
+
+
+    if choice == 1:
+        Nim = int(input("Nim : "))
+        subject_nm = int(input("Subject_nm : "))
+        grade = input("Grade : ")
+
+        add_grades = Grade(Nim, subject_nm, grade)
+        add_grades.add_grade()
+
+    elif choice == 2:
+        Nim = int(input("Nim : "))
+        Grade.view_grade(Nim)
+
+
+    elif choice == 3:
+        Nim = int(input("Nim : "))
+        subject_nm = int(input("Subject_nm : "))
+        grade = input("Grade : ")
+
+        edit_grades = Grade(Nim, subject_nm, grade)
+        edit_grades.edit_grade()
+
+    elif choice == 4:
+        Nim = int(input("Nim : "))
+
+        Grade.delete_grade(Nim)
+
+
 
 main()

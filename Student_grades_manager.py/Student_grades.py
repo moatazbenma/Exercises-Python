@@ -143,3 +143,78 @@ class Subject:
             db.commit()
             print("✅ Student deleted successfully!")
             db.close()
+
+class Grade:
+    def __init__(self, Nim, subject_nm, grade):
+        self.Nim = Nim
+        self.subject_nm = subject_nm
+        self.grade = grade
+
+
+    def add_grade(self):
+        db = connect_db()
+        if db:
+            try:
+                cursor = db.cursor()
+                sql = 'INSERT INTO grades(Nim, subject_nm, grade) VALUES (%s, %s, %s)'
+                values = (self.Nim, self.subject_nm, self.grade)
+                cursor.execute(sql, values)
+                db.commit()
+                print("✅ Student grade has been added")
+            except Exception as e:
+                print(f"Error : {e}")
+            finally:
+                db.close()
+
+    @staticmethod
+    def view_grade(Nim):
+        db = connect_db()
+        if db:
+            try:
+                cursor = db.cursor()
+                sql = 'SELECT * FROM grades WHERE Nim = %s'
+                values = (Nim,)
+                cursor.execute(sql, values)
+                grades = cursor.fetchall()
+
+                print('\n-----Grades Records------')
+                for i in grades:
+                    print(i)
+
+            except Exception as e:
+                print(f"Error : {e}")
+            finally:
+                db.close()
+        
+    def edit_grade(self):
+        db = connect_db()
+        if db:
+            try:
+                cursor = db.cursor()
+                sql= 'UPDATE grades SET subject_nm = %s, grade = %s WHERE Nim = %s'
+                values = (self.subject_nm, self.grade, self.Nim)
+                cursor.execute(sql, values)
+                db.commit()
+                print("✅ Student Grade has been Edited")
+            except Exception as e:
+                print(f"Error : {e}")
+            finally: 
+                db.close()
+
+
+    @staticmethod
+    def delete_grade(Nim):
+        db = connect_db()
+        if db:
+            try:
+                cursor = db.cursor()
+                sql = "DELETE FROM grades WHERE Nim = %s"
+                values = (Nim,)
+                cursor.execute(sql, values)
+                db.commit()
+                print("✅ Student Grade has been Deleted")
+            except Exception as e:
+                print(f"Error : {e}")
+            finally:
+                db.close()
+
