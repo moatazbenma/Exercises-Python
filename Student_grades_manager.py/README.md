@@ -1,8 +1,3 @@
-# 🎓 Student Grades Management System
-
-A simple and functional CLI-based system built in **Python** and **MySQL** to manage Students, Subjects, and Grades using Object-Oriented Programming (OOP) principles.
-
----
 
 # 🎓 Student Grades Management System
 
